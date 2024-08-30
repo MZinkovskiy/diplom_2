@@ -18,25 +18,14 @@ public class OrderGetTest {
     String accessToken;
     String refreshToken;
     AllOrders orders;
-    Authorization authorization;
 
     private UserSteps user = new UserSteps();
     private OrderSteps orderSteps = new OrderSteps();
 
-    @Step("Получение токена")
-    public void getTokens() {
-        authorization = user.loginUser(emailUser, passwordUser, nameUser)
-                .extract()
-                .body().as(Authorization.class);
-
-        accessToken = authorization.getAccessToken();
-        refreshToken = authorization.getRefreshToken();
-    }
-
     @Test
     @DisplayName("Получение заказов авторизованного пользователя")
     public void getOrdersWithLoginTrue() {
-        getTokens();
+        accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
 
         orders = orderSteps
                 .getOrders(accessToken)
@@ -63,7 +52,8 @@ public class OrderGetTest {
 
         user.createUser(emailUser, passwordUser, nameUser);
 
-        getTokens();
+        accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
+        refreshToken = user.getRefreshToken(emailUser, passwordUser, nameUser);
 
         List<String> hash = Arrays.asList("61c0c5a71d1f82001bdaaa74", "61c0c5a71d1f82001bdaaa70");
         orderSteps.createOrder(accessToken, hash);
@@ -76,7 +66,7 @@ public class OrderGetTest {
     @After
     public void dataCleaning() {
         if (accessToken == null) {
-            getTokens();
+            accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
         }
         if (accessToken != null) {
             user.deleteUser(accessToken);

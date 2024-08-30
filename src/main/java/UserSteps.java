@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import io.restassured.filter.log.ErrorLoggingFilter;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -18,6 +19,7 @@ public class UserSteps {
         POST_CREATE = "/api/auth/register";
     }
 
+    @Step("Создание нового пользователя")
     public Response createUser(String email, String password, String name) {
         return given()
                 .contentType(ContentType.JSON)
@@ -31,6 +33,7 @@ public class UserSteps {
                 .post(POST_CREATE);
     }
 
+    @Step("Авторизация пользователя")
     public ValidatableResponse loginUser(String email, String password, String name) {
         return given()
                 .contentType(ContentType.JSON)
@@ -45,6 +48,7 @@ public class UserSteps {
                 .then();
     }
 
+    @Step("Удаление пользователя")
     public ValidatableResponse deleteUser(String accessToken) {
         return given()
                 .contentType(ContentType.JSON)
@@ -57,6 +61,7 @@ public class UserSteps {
                 .then();
     }
 
+    @Step("Изменение данных пользователя (email и/или имя)")
     public ValidatableResponse changeUser(String accessToken, String email, String name) {
         if (accessToken != null & accessToken.length() > 0) {
             accessToken = accessToken.substring(7, accessToken.length());
@@ -87,6 +92,7 @@ public class UserSteps {
                 .then();
     }
 
+    @Step("Logout пользователя")
     public ValidatableResponse logoutUser(String refreshToken) {
         return given()
                 .contentType(ContentType.JSON)
@@ -97,6 +103,32 @@ public class UserSteps {
                 .when()
                 .post(POST_LOGOUT)
                 .then();
+    }
+
+    @Step("Получение accessToken")
+    public String getAccessToken(String emailUser, String passwordUser, String nameUser) {
+        String accessToken = this.loginUser(emailUser, passwordUser, nameUser)
+                .extract()
+                .body()
+                .path("accessToken");
+        return accessToken;
+    }
+
+    @Step("Получение refreshToken")
+    public String getRefreshToken(String emailUser, String passwordUser, String nameUser) {
+
+        Authorization authorization = this.loginUser(emailUser, passwordUser, nameUser)
+                .extract()
+                .body().as(Authorization.class);
+
+        return authorization.getRefreshToken();
+    }
+
+    @Step("Получение ответа на запрос изменение данных пользователя (email и/или имя)")
+    public ResultResponse getResult(String accessToken, String emailUserNew, String nameUserNew) {
+        return this.changeUser(accessToken, emailUserNew, nameUserNew)
+                .extract()
+                .body().as(ResultResponse.class);
     }
 
 }

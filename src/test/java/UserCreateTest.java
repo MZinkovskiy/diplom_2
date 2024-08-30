@@ -104,10 +104,7 @@ public class UserCreateTest {
 
     @After
     public void dataCleaning() {
-        accessToken = user.loginUser(emailUser, passwordUser, nameUser)
-                .extract()
-                .body()
-                .path("accessToken");
+        accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
         if (accessToken != null) {
             user.deleteUser(accessToken);
         }

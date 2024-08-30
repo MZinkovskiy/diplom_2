@@ -19,19 +19,19 @@ public class OrderCreateTest {
 
     private UserSteps user = new UserSteps();
     private OrderSteps order = new OrderSteps();
-
-    @Step("Получение токена")
-    public void getAccesToken() {
-        accessToken = user.loginUser(emailUser, passwordUser, nameUser)
-                .extract()
-                .body()
-                .path("accessToken");
-    }
+//
+//    @Step("Получение токена")
+//    public void getAccesToken() {
+//        accessToken = user.loginUser(emailUser, passwordUser, nameUser)
+//                .extract()
+//                .body()
+//                .path("accessToken");
+//    }
 
     @Test
     @DisplayName("Создание заказа с авторизацией пользователем и с ингредиентами")
     public void createOrderTrue() {
-        getAccesToken();
+        accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
 
         List<String> hash = Arrays.asList("61c0c5a71d1f82001bdaaa74", "61c0c5a71d1f82001bdaaa70");
         order
@@ -55,7 +55,7 @@ public class OrderCreateTest {
     @Test
     @DisplayName("Попытка создания заказа без ингредиентов")
     public void createOrderWithoutIngredientsFalse() {
-        getAccesToken();
+        accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
 
         List<String> hash = new ArrayList<>();
         order
@@ -69,7 +69,7 @@ public class OrderCreateTest {
     @Test
     @DisplayName("Попытка создания заказа с неверным хештегом ингредиентов")
     public void createOrderIngredientsErrorFalse() {
-        getAccesToken();
+        accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
 
         List<String> hash = Arrays.asList("61c0c5a71d1f82001bdaaa74", "61c0c5a70000001bdaaa77");
         order
@@ -90,7 +90,7 @@ public class OrderCreateTest {
     @After
     public void dataCleaning() {
         if (accessToken == null) {
-            getAccesToken();
+            accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
         }
         if (accessToken != null) {
             user.deleteUser(accessToken);

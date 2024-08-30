@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import io.restassured.filter.log.ErrorLoggingFilter;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -14,6 +15,7 @@ public class OrderSteps {
     public final String POST_CREATE = "/api/orders";
     public final String GET_ORDERS = "/api/orders";
 
+    @Step("Создание заказа")
     public Response createOrder(String accessToken, List<String> hash) {
         if (accessToken != null & accessToken.length() > 0) {
             accessToken = accessToken.substring(7, accessToken.length());
@@ -38,6 +40,7 @@ public class OrderSteps {
                 .post(POST_CREATE);
     }
 
+    @Step("Получение заказов пользователя")
     public ValidatableResponse getOrders(String accessToken) {
         if (accessToken != null & accessToken.length() > 0) {
             accessToken = accessToken.substring(7, accessToken.length());

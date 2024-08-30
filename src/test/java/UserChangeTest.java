@@ -18,28 +18,13 @@ public class UserChangeTest {
     String emailUserNew = (randomAlphabetic(10) + "@yandex.ru").toLowerCase();
     String nameUserNew = randomAlphabetic(12);
 
-    private UserSteps userSteps = new UserSteps();
-
-    @Step("Получение токена")
-    public void getAccesToken() {
-        accessToken = userSteps.loginUser(emailUser, passwordUser, nameUser)
-                .extract()
-                .body()
-                .path("accessToken");
-    }
-
-    @Step("Получение ответа на запрос")
-    public void getResult(String emailUserNew, String nameUserNew) {
-        result = userSteps.changeUser(accessToken, emailUserNew, nameUserNew)
-                .extract()
-                .body().as(ResultResponse.class);
-    }
+    private UserSteps user = new UserSteps();
 
     @Test
     @DisplayName("Изменение email и имя пользователя с авторизацией")
     public void changeUserDataTrue() {
-        getAccesToken();
-        getResult(emailUserNew, nameUserNew);
+        accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
+        result = user.getResult(accessToken, emailUserNew, nameUserNew);
 
         assertTrue(result.isSuccess());
         assertTrue(result.getUser().getEmail().equals(emailUserNew));
@@ -49,8 +34,8 @@ public class UserChangeTest {
     @Test
     @DisplayName("Изменение только email пользователя с авторизацией")
     public void changeUserEmailTrue() {
-        getAccesToken();
-        getResult(emailUserNew, null);
+        accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
+        result = user.getResult(accessToken, emailUserNew, null);
 
         assertTrue(result.isSuccess());
         assertTrue(result.getUser().getEmail().equals(emailUserNew));
@@ -61,8 +46,8 @@ public class UserChangeTest {
     @Test
     @DisplayName("Изменение только имя пользователя с авторизацией")
     public void changeUserNameTrue() {
-        getAccesToken();
-        getResult(null, nameUserNew);
+        accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
+        result = user.getResult(accessToken, null, nameUserNew);
 
         assertTrue(result.isSuccess());
         assertTrue(result.getUser().getEmail().equals(emailUser.toLowerCase()));
@@ -73,7 +58,7 @@ public class UserChangeTest {
     @Test
     @DisplayName("Попытка изменения данных пользователя без авторизации")
     public void changeUserDataWithoutLoginFalse() {
-        userSteps
+        user
                 .changeUser("", emailUserNew, nameUserNew)
                 .statusCode(401)
                 .body("success", is(false))
@@ -86,16 +71,16 @@ public class UserChangeTest {
         passwordUser = randomAlphabetic(10);
         nameUser = randomAlphabetic(12);
 
-        userSteps.createUser(emailUser, passwordUser, nameUser);
+        user.createUser(emailUser, passwordUser, nameUser);
     }
 
     @After
     public void dataCleaning() {
         if (accessToken == null) {
-            getAccesToken();
+            accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
         }
         if (accessToken != null) {
-            userSteps.deleteUser(accessToken);
+            user.deleteUser(accessToken);
         }
     }
 }

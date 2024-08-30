@@ -65,10 +65,7 @@ public class UserLoginTest {
     @After
     public void dataCleaning() {
         if (accessToken == null) {
-            accessToken = user.loginUser(emailUser, passwordUser, nameUser)
-                    .extract()
-                    .body()
-                    .path("accessToken");
+            accessToken = user.getAccessToken(emailUser, passwordUser, nameUser);
         }
         if (accessToken != null) {
             user.deleteUser(accessToken);
