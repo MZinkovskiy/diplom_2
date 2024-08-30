@@ -4,11 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4ca9d5f-540c-4a11-864e-806f248f9e51" name="Changes" comment="" />
+    <list default="true" id="e4ca9d5f-540c-4a11-864e-806f248f9e51" name="Changes" comment="Add allure report">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Allure Report.html" beforeDir="false" afterPath="$PROJECT_DIR$/Allure Report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Allure Report_files/js" beforeDir="false" afterPath="$PROJECT_DIR$/Allure Report_files/js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/OrderSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/OrderSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/OrderCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OrderCreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/OrderGetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OrderGetTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserChangeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserChangeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserCreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -16,10 +35,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2lEswCr5rj8IlPnsdy4w3vvWo1m" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -28,12 +47,81 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.OrderCreateTest.createOrderTrue.executor": "Run",
+    "JUnit.UserChangeTest.changeUserDataTrue.executor": "Run",
+    "JUnit.UserCreateTest.createUserWithoutNameFalse.executor": "Run",
+    "JUnit.UserCreateTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "develop2",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mzink_sznbxnl/Yandex/Diplom/diplom_2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mzink_sznbxnl\Yandex\Diplom\diplom_2" />
+      <recent name="C:\Users\mzink_sznbxnl\Yandex\Diplom\diplom_2\src\main\java" />
+      <recent name="C:\Users\mzink_sznbxnl\Yandex\Diplom\diplom_2\src\test\java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.UserCreateTest">
+    <configuration name="OrderCreateTest.createOrderTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="diplom_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OrderCreateTest" />
+      <option name="METHOD_NAME" value="createOrderTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserChangeTest.changeUserDataTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="diplom_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserChangeTest" />
+      <option name="METHOD_NAME" value="changeUserDataTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserCreateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="diplom_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserCreateTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserCreateTest.createUserWithoutNameFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="diplom_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserCreateTest" />
+      <option name="METHOD_NAME" value="createUserWithoutNameFalse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserCreateTest" />
+        <item itemvalue="JUnit.UserCreateTest.createUserWithoutNameFalse" />
+        <item itemvalue="JUnit.UserChangeTest.changeUserDataTrue" />
+        <item itemvalue="JUnit.OrderCreateTest.createOrderTrue" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-868cef46" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -43,6 +131,28 @@
       <option name="presentableId" value="Default" />
       <updated>1724756807133</updated>
     </task>
+    <task id="LOCAL-00001" summary="Diplom, part II - API">
+      <option name="closed" value="true" />
+      <created>1724757654952</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724757654952</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add allure report">
+      <option name="closed" value="true" />
+      <created>1724757749359</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1724757749359</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Diplom, part II - API" />
+    <MESSAGE value="Add allure report" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add allure report" />
   </component>
 </project>
